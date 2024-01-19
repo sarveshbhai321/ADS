@@ -19,8 +19,10 @@ class node
      node *next;
      string city[10];
      node *temp=NULL;
-    string nashikdest[5];
+    string sources[10];
     int i=0;
+    string src;
+    string dst;
     public:
 
     void addnode()
@@ -49,16 +51,32 @@ class node
            
 
         }
-        if( Node->source=="nashik")
-        {
-            nashikdest[i]=Node->destination;
-            i++;
-        }
+        
+        
     }
+    void check()
+    {
+    cout<<"enter the source";
+    cin>>src;
+    cout<<"enter the destination";
+    cin>>dst;
+    temp=head;
+    while(temp!=NULL)
+    {
+    if(temp->source==src&&temp->destination==dst)
+    {
+		cout<<"there exists flight between"<<src<<dst<<endl;
+		return;
+		}
+		
+		temp=temp->next;
+		}
+	cout<<"there ios no flight";
+		}
     void display()
     {
         node *temp =head;
-        while(temp->next!=NULL)
+        while(temp!=NULL)
         {
         cout<<"source is";
         cout<<temp->source<<endl;
@@ -71,6 +89,26 @@ class node
         {
             cout<<nashikdest[j];
         }
+        void adjacency()
+        { int m;
+        cout<<"enter the number of cities";
+        cin>>m;
+        for(int i=0;i<m;i++)
+        {
+        cout<<"enter the source";
+        cin>>sources[i];
+        }
+        for(int i=0;i<m;i++)
+        {
+        cout<<"enter the source";
+        cin>>sources[i];
+        }
+        
+        for(int i=0;i<m;i++)
+        {
+        for(int j=0;j<m;j++)
+        {
+       
 
 
     }
@@ -81,7 +119,7 @@ int main()
     node obj;
     while(true)
     {
-    cout<<"enter the operators";
+    cout<<"enter the operators"<<endl;
     cin>>operators;
     switch(operators)
     {
@@ -90,6 +128,9 @@ int main()
         break;
         case 2:
         obj.display();
+        break;
+        case 3:
+        obj.check();
         break;
 
     }
