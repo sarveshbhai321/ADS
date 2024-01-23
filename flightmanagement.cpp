@@ -21,8 +21,11 @@ class node
      node *temp=NULL;
     string sources[10];
     int i=0;
+    int l=0;
+    string destination1[50];
     string src;
     string dst;
+    string new1[50][50];
     public:
 
     void addnode()
@@ -51,6 +54,8 @@ class node
            
 
         }
+        destination1[l]=destination;
+        l++;
         
         
     }
@@ -73,7 +78,7 @@ class node
 		}
 	cout<<"there ios no flight";
 		}
-    void display()
+   /*void display()
     {
         node *temp =head;
         while(temp!=NULL)
@@ -89,28 +94,39 @@ class node
         {
             cout<<nashikdest[j];
         }
+    }*/
         void adjacency()
-        { int m;
-        cout<<"enter the number of cities";
-        cin>>m;
-        for(int i=0;i<m;i++)
-        {
-        cout<<"enter the source";
-        cin>>sources[i];
-        }
-        for(int i=0;i<m;i++)
-        {
-        cout<<"enter the source";
-        cin>>sources[i];
-        }
-        
-        for(int i=0;i<m;i++)
-        {
-        for(int j=0;j<m;j++)
-        {
+        {  head=temp;
+            while(temp!=NULL)
+            {int i=0;
+                for (int j=0;j<=l-1;j++)
+                {
+                    if(temp->destination==destination1[j])
+                    {
+                        new1[i][j]="1";
+                    }
+                    else{
+                        new1[i][j]="0";
+                    }
+
+                }
+                temp=temp->next;
+                i++;
+            }
        
 
 
+    }
+    void displayadj()
+    {
+        for(int i=0;i<=l;i++)
+        {
+            for(int j=0;j<=l;j++)
+            {
+                cout<<new1[i][j];
+            }
+            cout<<endl;
+        }
     }
 };
 int main()
@@ -126,11 +142,17 @@ int main()
         case 1:
         obj.addnode();
         break;
-        case 2:
+       /* case 2:
         obj.display();
-        break;
+        break;*/
         case 3:
         obj.check();
+        break;
+        case 4:
+        obj.adjacency();
+        break;
+        case 5:
+        obj.displayadj();
         break;
 
     }
