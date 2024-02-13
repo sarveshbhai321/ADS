@@ -10,6 +10,7 @@ public:
     topologicalsort* head;
     string destination;
     int j = 0;
+    int i=0;
 
     void addsource() {
         cout << "enter the source: ";
@@ -21,15 +22,15 @@ public:
         j++;
     }
 
-    void createpath() {
+    void createpath() {i=0;
         cout << "enter the source you want to search: ";
         cin >> source;
         topologicalsort* Node = new topologicalsort;
-        for (int i = 0; i < j; i++) {
-            if ((a[i]->head)->source == source) {
+        while(i<j) {
+            if (a[i]->source == source) {
                 cout << "enter the destination: ";
                 cin >> destination;
-                temp = a[i]->head;
+                temp = head;
                 while (temp->next != NULL) {
                     temp = temp->next;
                 }
@@ -37,6 +38,7 @@ public:
                 Node->destination = destination;
                 Node->next = NULL;
             }
+            i++;
         }
     }
 
@@ -45,7 +47,7 @@ public:
         cin >> source;
         for (int k = 0; k < j; k++) {
             if (a[k]->source == source) {
-                temp = a[k]->head;
+                temp = head;
                 while (temp != NULL) {
                     cout << source << " -----> " << temp->destination << endl;
                     temp = temp->next;
@@ -59,7 +61,7 @@ int main() {
     topologicalsort obj;
     int operators;
     int l = 0;
-    while (l < 5) {
+    while (l < 8) {
         cout << "enter the operator: ";
         cin >> operators;
         switch (operators) {
