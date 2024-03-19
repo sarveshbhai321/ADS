@@ -60,7 +60,7 @@ public:
     void printInOrder()
     {
         stack<bst*> s;
-        bst* current = this;
+        bst* current = head;
 
         while (current != nullptr || !s.empty())
         {
