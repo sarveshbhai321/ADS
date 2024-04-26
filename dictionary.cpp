@@ -48,7 +48,7 @@ public:
             root->left = Node;
             root = Node;
             root = head;
-            cout << "Node successfully inserted";
+            cout << "Node successfully inserted"<<endl;
         }
         else if (data > root->data)
         {
@@ -58,7 +58,7 @@ public:
             root->right = Node;
             root = Node;
             root = head;
-            cout << "Node successfully inserted";
+            cout << "Node successfully inserted"<<endl;
         }
     }
 
@@ -82,6 +82,29 @@ public:
             {
             cout << current->data << " "<<"meaning  is"<<current->value;
             }
+            current = current->right;
+        }
+    }
+    void Tables()
+    {
+
+        stack<bst*> s1;
+        bst* current = head;
+        cout<<"data"<<"      "<<"meaning"<<endl;
+        cout<<"-------------"<<endl;
+        while (current != nullptr || !s1.empty())
+        {
+            while (current != nullptr)
+            {
+                s1.push(current);
+                current = current->left;
+            }
+            current = s1.top();
+            s1.pop();
+            cout<<"|";
+            cout << current->data << "      "<<current->value;
+            cout<<endl;
+            cout<<"|"<<"----------------------"<<"|"<<endl;
             current = current->right;
         }
     }
@@ -113,8 +136,12 @@ int main()
                 obj.insertnode(data,value);
                 break;
             case 2:
+            // for finding word
                 obj.printInOrder();
                 break;
+            case 3:
+            // for printing table 
+                obj.Tables();
         }
     }
 
